@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+header {
+  text-align: center;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+/* ======== Responsive Design ======== */
+
+/* For small screens like mobile phones */
+@media (max-width: 768px) {
+
+  /* Navbar */
+  nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 8px 0;
+  }
+
+  /* Logo */
+  nav img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  /* Heading text */
+  h1, h2, h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  /* Slideshow arrows */
+  .prev, .next {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Section padding */
+  section {
+    padding: 20px;
+  }
+
+  /* Cards or Facilities */
+  .facilities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .facility {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  /* Course titles */
+  .course-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.3rem;
+  }
+
+  nav img {
+    width: 70px;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}

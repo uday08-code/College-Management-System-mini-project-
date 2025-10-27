@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Website - Mysuru Royal Institute of Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            font-size: 18px; 
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 20px 20px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: #4CAF50;
+            border-radius: 5px;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #645c5c;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: justify;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 0px 0;
+        }
+
+        .image-section img {
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        .options-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .options-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .option-box {
+            width: 250px;
+            padding: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .option-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .option-box h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .option-box p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .option-box img {
+            display: block;
+            margin: 0 auto;
+            width: 80%; /* adjust as needed */
+            border-radius: 10px; /* optional, for smoother edges */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/0.jpg" alt="College Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="staff.html">Staff</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-text">
+            <h1>Welcome to Mysuru Royal Institute of Technology (MRIT)</h1>
+            <p>MRIT is an esteemed engineering college committed to providing world-class education and fostering innovation. Located in the heritage city of Mysuru, Karnataka, MRIT aims to shape the next generation of engineers, leaders, and innovators who will contribute to society's progress.</p>
+            <p>Our mission is to provide high-quality education while ensuring holistic development. We strive to instill strong values, creativity, and ethics to guide our students to positively impact the world.</p>
+        </section>
+
+        <section class="image-section">
+            <h2>Campus View</h2>
+            <img src="https://media.licdn.com/dms/image/v2/C561BAQGPz8H_nkkAXg/company-background_10000/company-background_10000/0/1607084178545/mritech_cover?e=2147483647&v=beta&t=AY833nBMyisuO8fS_BVInqViGz6hG_3NSqu1kHN08l8" alt="Campus Image">
+        </section>
+
+        <section>
+            <h2>Academic Programs</h2>
+            <p>MRIT offers a wide variety of undergraduate and postgraduate programs designed to equip students with knowledge and skills for their careers. Some of our core programs include:</p>
+            <ul>
+                <li>Bachelor of Engineering (B.E.) in Computer Science Engineering</li>
+                <li>Bachelor of Engineering (B.E.) in Civil Engineering</li>
+                <li>Bachelor of Engineering (B.E.) in Electronics and communication Engineering</li>
+                <li>Bachelor of Engineering (B.E.) in Mechanical Engineering</li>
+                <li>Bachelor of Engineering (B.E.) in Information Science and Engineering</li>
+                <li>Bachelor of Engineering (B.E.) in  AIML Engineering</li>
+            </ul>
+            <p>Additionally, we offer postgraduate programs for those looking to deepen their expertise.</p>
+        </section>
+
+        <section class="options-section">
+            <h2>Our Facilities</h2>
+            <div class="options-boxes">
+                <div class="option-box">
+                    <h3>Library</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5FMhIkzaM6EX4MeT_ppwCaHZaB4Zo00l-01Bunjocpdswv-R5NydlDUEpt_0G9eRRabw&usqp=CAU" alt="Library Logo">
+                    <p>Explore a vast collection of books, journals, and digital resources.</p>
+                </div>
+                <div class="option-box">
+                    <h3>Sports</h3>
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.11y3kEvc7JPuDsL0lw6Y6wHaE7&pid=Api&P=0&h=180" alt="Sports Logo">
+                    <p>Participate in outdoor and indoor games like football, cricket, and badminton.</p>
+                </div>
+                <div class="option-box">
+                    <h3>Bus Facility</h3>
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.NTqSgw_2nqzVMWa3UAOIRQHaDt?pid=Api&P=0&h=180" alt="Bus Logo">
+                    <p>Convenient bus routes connecting the campus with the city.</p>
+                </div>
+                <div class="option-box">
+                    <h3>Placement & Training</h3>
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.HZ3hsbQEpKeP0qZljF6aKwHaDm?pid=Api&P=0&h=180" alt="Bus Logo">
+                    <p>Enhance your skills with training and placement opportunities.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mysuru Royal Institute of Technology. All rights reserved.</p>
+    </footer>
+</body>
+</html>

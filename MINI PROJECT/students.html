@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Website</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome CDN -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 20px 20px;
+            color: white;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: lightgreen;
+            color: black;
+         }
+        /* Option Boxes Section */
+        .option-boxes {
+            display: flex;
+            flex-direction: column; /* Aligns items vertically */
+            justify-content: center;
+            align-items: center; /* Centers the boxes horizontally */
+            margin-top: 40px;
+        }
+
+        .option-box {
+            width: 80%; /* Adjusted width to make boxes more narrow */
+            max-width: 400px; /* Maximum width to maintain responsiveness */
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .option-box:hover {
+            transform: scale(1.05);
+        }
+
+        .option-box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .option-box .box-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/0.jpg" alt="College Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="staff.html">Staff</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Option Boxes Section -->
+    <div class="option-boxes">
+        <!-- Student Details Box -->
+        <div class="option-box" onclick="window.location.href='std details/details.html'">
+            <i class="fas fa-user box-icon"></i>
+            <h3>Student Details</h3>
+            <p>View and update your personal details.</p>
+        </div>
+
+        <!-- Student Academic Details Box -->
+        <div class="option-box" onclick="window.location.href='std details/academic.html'">
+            <i class="fas fa-graduation-cap box-icon"></i>
+            <h3>Student Academic Details</h3>
+            <p>View your academic progress and records.</p>
+        </div>
+
+        <!-- Academic Fees Payment Box -->
+        <div class="option-box" onclick="window.location.href='std details/academicfees.html'">
+            <i class="fas fa-credit-card box-icon"></i>
+            <h3>Academic Fees Payment</h3>
+            <p>Pay your academic fees securely.</p>
+        </div>
+
+        <!-- Exam Fees Payment Box -->
+        <div class="option-box" onclick="window.location.href='std details/fees.html'">
+            <i class="fas fa-file-invoice box-icon"></i>
+            <h3>Exam Fees Payment</h3>
+            <p>Pay for upcoming exams.</p>
+        </div>
+
+        <!-- Supplementary Fees Payment Box -->
+        <div class="option-box" onclick="window.location.href='std details/supply fees.html'">
+            <i class="fas fa-clipboard-list box-icon"></i>
+            <h3>Supplementary Fees Payment</h3>
+            <p>Pay for supplementary exams.</p>
+        </div>
+    </div>
+       <footer>
+        <p>&copy; 2024 Mysuru Royal Institute of Technology. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

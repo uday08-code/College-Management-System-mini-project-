@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Website</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome CDN -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #2d3e50;
+            padding: 20px;
+            color: white;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #4CAF50;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2d3e50;
+            color: white;
+        }
+
+        /* Welcome Title Styling */
+        .welcome-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #c90f47;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Image Carousel Styling */
+        .image-carousel {
+            position: relative;
+            max-width: 80%;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 1s ease;
+        }
+
+        .carousel-images img {
+            width: 80%;  /* Reduced image size */
+            max-width: 300px;  /* Set a max width */
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+
+        /* Hover effect for images */
+        .carousel-images img:hover {
+            transform: scale(1.05);  /* Slightly enlarge image on hover */
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);  /* Add shadow on hover */
+        }
+
+        /* Buttons for Carousel */
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 40px;
+            font-weight: bold;
+            border-radius: 50%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);  /* Button enlarge on hover */
+        }
+
+        .carousel-button:focus {
+            outline: none;
+        }
+
+        .carousel-button-prev {
+            left: 10px;
+        }
+
+        .carousel-button-next {
+            right: 10px;
+        }
+
+        /* Our Courses Section */
+        .courses-heading {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .courses-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .course-box {
+            width: 250px;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .course-box:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .course-box h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .course-box p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .course-box .course-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/0.jpg" alt="College Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="staff.html">Staff</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Title -->
+    <div class="welcome-title">
+        <h1>WELCOME TO MYSURU ROYAL INSTITUTE OF TECHNOLOGY</h1>
+        <h5 style="text-align: center; line-height: 1.4;"><span style="color: #ff6600;">Admissions open for CS, AIML, IS, EC, Civil, Mechanical Engineering Branches</span> </h5>
+        <hr style="border: 2px solid rgba(3, 3, 17, 0.627);">
+        <h6 style="text-align: center; line-height: 1.4;"><span style="color: #008000;">Admissions open for MBA</span> </h6>
+
+    </div>
+
+    <!-- Image Carousel Section -->
+    <div class="image-carousel">
+        <div class="carousel-images">
+            <!-- Limited images (only 8 in this case) -->
+            <img src="https://tse1.mm.bing.net/th/id/OIP.Lh9Lx3NchppHWTacxo2bZQHaD5?pid=Api&P=0&h=180" alt="Image 1">
+            <img src="images/mys_1.png" alt="Image 2">
+            <img src="images/1483420110F-3.jpg" alt="Image 3">
+            <img src="images/25_11_16_044413_seminar.jpg" alt="Image 4">
+            <img src="images/1483420110f-5.jpg" alt="Image 5">
+            <img src="images/1483420110f-1.jpg" alt="Image 6">
+            <img src="images/maxresdefault.jpg" alt="Image 7">
+            <img src="images/1483420110f-2.jpg" alt="Image 8">
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button carousel-button-prev" onclick="prevImage()">&#10094;</button>
+            <button class="carousel-button carousel-button-next" onclick="nextImage()">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Centered "Our Courses" Heading -->
+    <div class="courses-heading">
+        <h1>Our Courses</h1>
+    </div>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <!-- Course 1: Computer Science Engineering -->
+        <div class="course-box">
+            <i class="fas fa-laptop-code course-icon"></i>
+            <h3>Computer Science and Engineering</h3>
+            <p>Explore cutting-edge technologies in software, algorithms, and data science.</p>
+        </div>
+
+        <!-- Course 2: Civil Engineering -->
+        <div class="course-box">
+            <i class="fas fa-hard-hat course-icon"></i>
+            <h3>Civil Engineering</h3>
+            <p>Learn about the design, construction, and maintenance of infrastructure.</p>
+        </div>
+
+        <!-- Course 3: Electronics and Communication Engineering -->
+        <div class="course-box">
+            <i class="fas fa-bolt course-icon"></i>
+            <h3>Electronics and Communication Engineering</h3>
+            <p>Study the development of electrical systems and technologies.</p>
+        </div>
+
+        <!-- Course 4: Mechanical Engineering -->
+        <div class="course-box">
+            <i class="fas fa-cogs course-icon"></i>
+            <h3>Mechanical Engineering</h3>
+            <p>Focus on designing and manufacturing machines and mechanical systems.</p>
+        </div>
+
+         <!-- Course 5: Mechanical Engineering -->
+        <div class="course-box">
+            <i class="fas fa-cogs course-icon"></i>
+            <h3>AIML Engineering</h3>
+            <p>Focus on designing and manufacturing machines and mechanical systems.</p>
+        </div>
+
+        <!-- Course 6: Information Science and Engineering -->
+        <div class="course-box">
+            <i class="fas fa-network-wired course-icon"></i>
+            <h3>Information Science and Engineering</h3>
+            <p>Gain expertise in networking, programming, and IT systems.</p>
+        </div>
+    </section>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".carousel-images img");
+
+        // Function to update the carousel position
+        function updateCarousel() {
+            const offset = -currentImageIndex * 100;  // Move images by 100% based on the index
+            document.querySelector(".carousel-images").style.transform = `translateX(${offset}%)`;
+        }
+
+        // Show the next image and loop back to the first image when it reaches the last
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;  // Loop back to the first image when it reaches the last
+            updateCarousel();
+        }
+
+        // Show the previous image and loop back to the last image when it reaches the first
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;  // Loop back to the last image when it reaches the first
+            updateCarousel();
+        }
+
+        // Automatically change the image every 3 seconds (3000ms)
+        setInterval(nextImage, 3000);
+    </script>
+
+    <footer>
+        <p>&copy; 2025-26 Mysuru Royal Institute of Technology. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

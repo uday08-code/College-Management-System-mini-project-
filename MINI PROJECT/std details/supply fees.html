@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplementary Fee Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        select, option, input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .payment-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .payment-btn:hover {
+            background-color: #218838;
+        }
+        .card-info, .online-payment-info {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Supplementary Fee Payment</h1>
+
+        <!-- Course Selection -->
+        <div class="section">
+            <h2>Select Course</h2>
+            <select id="courseSelect" onchange="updateFees()">
+                <option value="Computer Science Engineering">Computer Science Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Electronics and Comunication Engineering">Electrical and Electronics Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Information Science">Information Technology</option>
+            </select>
+        </div>
+
+        <!-- Register Number -->
+        <div class="section" id="registerSection" style="display: none;">
+            <h2>Enter Register Number</h2>
+            <input type="text" id="registerNumber" placeholder="Enter your register number">
+        </div>
+
+        <!-- Semester Selection -->
+        <div class="section">
+            <h2>Select Semester</h2>
+            <select id="semesterSelect" onchange="updateSubjects()">
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+                <option value="7">Semester 7</option>
+                <option value="8">Semester 8</option>
+            </select>
+        </div>
+
+        <!-- Subjects Selection -->
+        <div class="section" id="subjectsSection" style="display: none;">
+            <h2>Select Subjects for Supplementary Exam</h2>
+            <div id="subjectsList"></div>
+        </div>
+
+        <!-- Marks Card Fee -->
+        <div class="section">
+            <label>
+                <input type="checkbox" id="marksCardCheckbox" onclick="calculateTotal()"> Include Marks Card Fee (₹600)
+            </label>
+        </div>
+
+        <!-- Total Fee Calculation -->
+        <div class="total" id="totalFee">
+            Total Fee: ₹0
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="section">
+            <h2>Select Payment Method</h2>
+            <select id="paymentMethodSelect" onchange="showPaymentDetails()">
+                <option value="card">Credit/Debit Card</option>
+                <option value="online">Online Payment</option>
+            </select>
+        </div>
+
+        <!-- Credit/Debit Card Information -->
+        <div class="section card-info" id="cardInfo">
+            <h2>Enter Credit/Debit Card Details</h2>
+            <input type="text" id="cardNumber" placeholder="Enter Card Number">
+            <input type="text" id="cardExpiry" placeholder="Enter Expiry Date (MM/YY)">
+            <input type="text" id="cardCVC" placeholder="Enter CVC">
+        </div>
+
+        <!-- Online Payment Information (Google Pay, PhonePe, etc.) -->
+        <div class="section online-payment-info" id="onlinePaymentInfo">
+            <h2>Select Your Online Payment Method</h2>
+            <select id="onlinePaymentMethod">
+                <option value="googlePay">Google Pay</option>
+                <option value="phonePe">PhonePe</option>
+                <option value="amazonPay">Amazon Pay</option>
+                <option value="paytm">Paytm</option>
+            </select>
+            <input type="text" id="onlinePaymentNumber" placeholder="Enter your phone number linked to the payment app">
+        </div>
+
+        <!-- Proceed to Payment -->
+        <button class="payment-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+
+    <script>
+        const subjects = {
+            "Computer Science Engineering": {
+                1: ["Mathematics I", "Programming Fundamentals", "Physics", "Electrical Circuits", "Engineering Drawing"],
+                2: ["Data Structures", "Discrete Mathematics", "Digital Electronics", "Operating Systems", "Computer Networks"],
+                3: ["Database Management Systems", "Design and Analysis of Algorithms", "Software Engineering", "Mathematics III", "Computer Architecture"],
+                4: ["Theory of Computation", "Compiler Design", "Microprocessors", "Operating Systems II", "Artificial Intelligence"],
+                5: ["Computer Graphics", "Web Technologies", "Software Engineering II", "Machine Learning", "Data Science"],
+                6: ["Computer Networks II", "Distributed Systems", "Digital Signal Processing", "Mobile Computing", "Cloud Computing"],
+                7: ["Cyber Security", "Big Data Analytics", "Artificial Intelligence II", "Internet of Things", "Software Project Management"],
+                8: ["Machine Learning II", "Blockchain Technology", "Cloud Computing II", "Computer Vision", "Data Analytics"]
+            },
+            "Civil Engineering": {
+                1: ["Mathematics I", "Building Materials", "Surveying", "Physics", "Engineering Drawing"],
+                2: ["Strength of Materials", "Fluid Mechanics", "Geotechnical Engineering", "Structural Analysis", "Surveying II"],
+                3: ["Concrete Technology", "Environmental Engineering", "Transportation Engineering", "Water Resource Engineering", "Structural Design"],
+                4: ["Soil Mechanics", "Hydraulics", "Construction Management", "Advanced Structural Design", "Reinforced Concrete"],
+                5: ["Steel Structures", "Design of Bridges", "Geotechnical Engineering II", "Water Supply Systems", "Building Construction"],
+                6: ["Advanced Surveying", "Traffic Engineering", "Earthquake Engineering", "Wastewater Engineering", "Environmental Systems"],
+                7: ["Structural Health Monitoring", "Coastal Engineering", "Urban Infrastructure", "Advanced Concrete Technology", "Design of Foundations"],
+                8: ["Geotechnical Engineering III", "Coastal Structures", "Highway Engineering", "Sustainable Engineering", "Advanced Fluid Mechanics"]
+            },
+            "Electrical and Electronics Engineering": {
+                1: ["Mathematics I", "Basic Electrical Engineering", "Electronics", "Physics", "Engineering Drawing"],
+                2: ["Circuit Theory", "Signals and Systems", "Electromagnetic Fields", "Electronic Devices", "Digital Electronics"],
+                3: ["Electrical Machines", "Control Systems", "Power Systems", "Mathematics III", "Microprocessors"],
+                4: ["Power Electronics", "Electrical Measurements", "Communication Systems", "Instrumentation", "Electrical Power Distribution"],
+                5: ["Advanced Power Systems", "Renewable Energy Systems", "Electrical Drives", "Control of Electrical Machines", "Digital Signal Processing"],
+                6: ["High Voltage Engineering", "Electrical Safety", "Industrial Automation", "Power System Protection", "VLSI Design"],
+                7: ["Artificial Intelligence", "Smart Grids", "Power Electronics for Renewable Energy", "Embedded Systems", "Data Communication and Networks"],
+                8: ["Advanced Control Systems", "Electric Vehicle Technology", "Power System Dynamics", "Electrical Distribution Automation", "Wireless Communication"]
+            },
+            "Mechanical Engineering": {
+                1: ["Mathematics I", "Engineering Mechanics", "Material Science", "Physics", "Engineering Drawing"],
+                2: ["Thermodynamics", "Fluid Mechanics", "Strength of Materials", "Manufacturing Processes", "Mathematics II"],
+                3: ["Dynamics of Machines", "Heat Transfer", "Machine Design", "Machine Elements", "Production Engineering"],
+                4: ["Manufacturing Technology", "Fluid Machinery", "Internal Combustion Engines", "Vibrations", "Mechatronics"],
+                5: ["Refrigeration and Air Conditioning", "Finite Element Method", "Control Systems", "Automobile Engineering", "Advanced Manufacturing Processes"],
+                6: ["Power Plant Engineering", "Computational Fluid Dynamics", "Renewable Energy Sources", "Machine Design II", "Instrumentation and Control"],
+                7: ["Robotics", "Advanced Thermodynamics", "Finite Element Analysis", "Industrial Engineering", "Additive Manufacturing"],
+                8: ["Nanotechnology", "Advanced Fluid Mechanics", "Automotive Engineering", "Computer Aided Design (CAD)", "Energy Management"]
+            },
+            "Information Technology": {
+                1: ["Mathematics I", "Computer Programming", "Digital Electronics", "Physics", "Engineering Drawing"],
+                2: ["Data Structures", "Discrete Mathematics", "Computer Networks", "Database Management Systems", "Operating Systems"],
+                3: ["Design and Analysis of Algorithms", "Software Engineering", "Object Oriented Programming", "Mathematics III", "Web Technologies"],
+                4: ["Computer Graphics", "Artificial Intelligence", "Computer Architecture", "Computer Organization", "Software Project Management"],
+                5: ["Data Science", "Machine Learning", "Cloud Computing", "Big Data Analytics", "Computer Vision"],
+                6: ["Mobile Computing", "Distributed Systems", "Cyber Security", "Internet of Things", "Data Mining"],
+                7: ["Blockchain Technology", "Cyber Forensics", "Digital Image Processing", "Networking Security", "E-commerce"],
+                8: ["Advanced Data Science", "Cloud Computing II", "Artificial Intelligence II", "Natural Language Processing", "Software Quality Assurance"]
+            }
+        };
+
+        const subjectFee = 500; // Fee per subject
+        const marksCardFee = 600; // Marks card fee
+
+        function updateSubjects() {
+            const course = document.getElementById('courseSelect').value;
+            const semester = document.getElementById('semesterSelect').value;
+
+            const subjectsList = document.getElementById('subjectsList');
+            subjectsList.innerHTML = '';
+            const courseSubjects = subjects[course][semester];
+            courseSubjects.forEach(subject => {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = subject;
+                checkbox.name = subject;
+                checkbox.value = subject;
+                checkbox.onclick = calculateTotal; // Add event listener for calculating total when subject is selected/deselected
+                
+                const label = document.createElement('label');
+                label.htmlFor = subject;
+                label.innerText = subject;
+
+                const div = document.createElement('div');
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                subjectsList.appendChild(div);
+            });
+            document.getElementById('subjectsSection').style.display = 'block';
+            calculateTotal(); // Recalculate total whenever subjects are updated
+        }
+
+        function calculateTotal() {
+            let totalAmount = 0;
+            const selectedSubjects = document.querySelectorAll('#subjectsList input:checked');
+            totalAmount = selectedSubjects.length * subjectFee;
+
+            // Add marks card fee if selected
+            if (document.getElementById('marksCardCheckbox').checked) {
+                totalAmount += marksCardFee;
+            }
+
+            document.getElementById('totalFee').innerText = `Total Fee: ₹${totalAmount}`;
+        }
+
+        function showPaymentDetails() {
+            const paymentMethod = document.getElementById('paymentMethodSelect').value;
+
+            if (paymentMethod === 'card') {
+                document.getElementById('cardInfo').style.display = 'block';
+                document.getElementById('onlinePaymentInfo').style.display = 'none';
+            } else {
+                document.getElementById('cardInfo').style.display = 'none';
+                document.getElementById('onlinePaymentInfo').style.display = 'block';
+            }
+        }
+
+        function updateFees() {
+            const registerSection = document.getElementById('registerSection');
+            registerSection.style.display = 'block';
+        }
+
+        function proceedToPayment() {
+            const registerNumber = document.getElementById('registerNumber').value;
+            const course = document.getElementById('courseSelect').value;
+            const semester = document.getElementById('semesterSelect').value;
+
+            if (!registerNumber) {
+                alert('Please enter your register number');
+                return;
+            }
+
+            let subjectsList = [];
+            document.querySelectorAll('#subjectsList input:checked').forEach((checkbox) => {
+                subjectsList.push(checkbox.value);
+            });
+
+            if (subjectsList.length === 0) {
+                alert('Please select at least one subject');
+                return;
+            }
+
+            let paymentDetails = `
+                Course: ${course}\n
+                Semester: ${semester}\n
+                Subjects: ${subjectsList.join(', ')}\n
+                Register Number: ${registerNumber}
+            `;
+
+            alert(`Proceeding to payment: \n${paymentDetails}`);
+        }
+    </script>
+</body>
+</html>
